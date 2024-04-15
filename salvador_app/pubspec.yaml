@@ -1,0 +1,84 @@
+name: salvador_task_management
+description: A new Flutter project.
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_login: ^5.0.0
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.1.6
+  shared_preferences: ^2.2.1
+  protobuf: ^3.1.0
+  dio: ^5.3.3
+  syncfusion_flutter_datagrid: ^24.2.3
+  fixnum: ^1.1.0
+  reactive_forms: ^16.1.1
+  reactive_dropdown_search: ^3.0.0
+  elegant_notification: ^1.11.2
+  global_configuration: ^2.0.0-nullsafety.1
+  sidebarx: ^0.16.3
+  isar: 4.0.0-dev.14
+  isar_flutter_libs: ^4.0.0-dev.14
+  path_provider: ^2.0.15
+  intl: ^0.18.1
+  webview_flutter: ^3.0.0
+  collection: ^1.18.0
+  http: ^1.2.1
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+
+  # responsive_builder: ^0.4.0
+  # pluto_grid: ^7.0.2
+  # image_picker: ^0.8.4
+  file_picker: ^6.2.0
+  open_file: ^3.3.2
+  image_picker: ^1.0.7
+  mailer: ^6.1.0
+  roundcheckbox: ^2.0.5
+  # bottom_sheet: ^3.0.0
+  # url_launcher: ^6.0.10
+  # flutter_map: ^6.1.0
+  # image_picker_platform_interface: ^2.9.3
+#  flutter_dropdown: ^1.0.1+hotfix.1
+#  dropdown_search: ^5.0.6
+#  flutter_hooks: ^0.20.5
+#  numberpicker: ^2.1.2
+
+
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.6
+  build_web_compilers: ^4.0.5
+  riverpod_generator: ^2.3.3
+  flutter_lints: ^3.0.1
+  analyzer: ^5.13.0
+  freezed: ^2.4.7
+  json_serializable: ^6.7.1
+
+# linter:
+#   rules:
+#     - cast_nullable_to_non_nullable
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    # Add assets from the images directory to the application.
+    - assets/images/
+    - assets/cfg/
+    - assets/json/
