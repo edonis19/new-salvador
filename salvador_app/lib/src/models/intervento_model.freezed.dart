@@ -1950,10 +1950,10 @@ mixin _$Riga {
   set prezzoUni(double? value) => throw _privateConstructorUsedError;
   double? get nettoRiga => throw _privateConstructorUsedError;
   set nettoRiga(double? value) => throw _privateConstructorUsedError;
-  String? get dtOraIni => throw _privateConstructorUsedError;
-  set dtOraIni(String? value) => throw _privateConstructorUsedError;
-  String? get dtOraFin => throw _privateConstructorUsedError;
-  set dtOraFin(String? value) => throw _privateConstructorUsedError;
+  DateTime? get dtOraIni => throw _privateConstructorUsedError;
+  set dtOraIni(DateTime? value) => throw _privateConstructorUsedError;
+  DateTime? get dtOraFin => throw _privateConstructorUsedError;
+  set dtOraFin(DateTime? value) => throw _privateConstructorUsedError;
   String? get operatore => throw _privateConstructorUsedError;
   set operatore(String? value) => throw _privateConstructorUsedError;
   bool? get saldaRiga => throw _privateConstructorUsedError;
@@ -2042,8 +2042,8 @@ abstract class $RigaCopyWith<$Res> {
       double? moltPrz,
       double? prezzoUni,
       double? nettoRiga,
-      String? dtOraIni,
-      String? dtOraFin,
+      DateTime? dtOraIni,
+      DateTime? dtOraFin,
       String? operatore,
       bool? saldaRiga,
       String? dataRichConsegna,
@@ -2312,11 +2312,11 @@ class _$RigaCopyWithImpl<$Res, $Val extends Riga>
       dtOraIni: freezed == dtOraIni
           ? _value.dtOraIni
           : dtOraIni // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       dtOraFin: freezed == dtOraFin
           ? _value.dtOraFin
           : dtOraFin // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       operatore: freezed == operatore
           ? _value.operatore
           : operatore // ignore: cast_nullable_to_non_nullable
@@ -2451,8 +2451,8 @@ abstract class _$$RigaImplCopyWith<$Res> implements $RigaCopyWith<$Res> {
       double? moltPrz,
       double? prezzoUni,
       double? nettoRiga,
-      String? dtOraIni,
-      String? dtOraFin,
+      DateTime? dtOraIni,
+      DateTime? dtOraFin,
       String? operatore,
       bool? saldaRiga,
       String? dataRichConsegna,
@@ -2719,11 +2719,11 @@ class __$$RigaImplCopyWithImpl<$Res>
       dtOraIni: freezed == dtOraIni
           ? _value.dtOraIni
           : dtOraIni // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       dtOraFin: freezed == dtOraFin
           ? _value.dtOraFin
           : dtOraFin // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       operatore: freezed == operatore
           ? _value.operatore
           : operatore // ignore: cast_nullable_to_non_nullable
@@ -2950,9 +2950,9 @@ class _$RigaImpl implements _Riga {
   @override
   double? nettoRiga;
   @override
-  String? dtOraIni;
+  DateTime? dtOraIni;
   @override
-  String? dtOraFin;
+  DateTime? dtOraFin;
   @override
   String? operatore;
   @override
@@ -3051,8 +3051,8 @@ abstract class _Riga implements Riga {
       required double? moltPrz,
       required double? prezzoUni,
       required double? nettoRiga,
-      required String? dtOraIni,
-      required String? dtOraFin,
+      required DateTime? dtOraIni,
+      required DateTime? dtOraFin,
       required String? operatore,
       required bool? saldaRiga,
       required String? dataRichConsegna,
@@ -3200,11 +3200,11 @@ abstract class _Riga implements Riga {
   double? get nettoRiga;
   set nettoRiga(double? value);
   @override
-  String? get dtOraIni;
-  set dtOraIni(String? value);
+  DateTime? get dtOraIni;
+  set dtOraIni(DateTime? value);
   @override
-  String? get dtOraFin;
-  set dtOraFin(String? value);
+  DateTime? get dtOraFin;
+  set dtOraFin(DateTime? value);
   @override
   String? get operatore;
   set operatore(String? value);

@@ -7,7 +7,7 @@ part of 'interventi_db_repository.dart';
 // **************************************************************************
 
 String _$interventiDbRepositoryHash() =>
-    r'133930a23915335f9c311a0677f76a8a58babb9b';
+    r'f02fa778af92cc1607c1e24ed1b537cb40130c54';
 
 /// See also [InterventiDbRepository].
 @ProviderFor(InterventiDbRepository)

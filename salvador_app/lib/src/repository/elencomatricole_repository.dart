@@ -20,7 +20,6 @@ class ElencoMatricoleApiRepositoryProvider {
   ElencoMatricoleApiRepositoryProvider(
       {required this.dio, required this.config}) {
     dio.interceptors.add(LogInterceptor());
-    if (kDebugMode) {
       // ignore: deprecated_member_use
       (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
           (client) {
@@ -28,7 +27,6 @@ class ElencoMatricoleApiRepositoryProvider {
             (X509Certificate cert, String host, int port) => true;
         return client;
       };
-    }
   }
 
   Future<dynamic> getMatricola({

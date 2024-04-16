@@ -25,7 +25,6 @@ Future<List<Articolo>> itemsApi(ItemsApiRef ref, String datalimite) async {
 class ItemApiRepository {
   ItemApiRepository({required this.dio, required this.config}) {
     dio.interceptors.add(LogInterceptor());
-    if (kDebugMode) {
       // feature deprecated
       // (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate = (client) {
       //   client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
@@ -41,7 +40,6 @@ class ItemApiRepository {
           return client;
         },
       );
-    }
   }
 
   final Dio dio;

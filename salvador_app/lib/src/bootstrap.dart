@@ -87,7 +87,16 @@ Future<ProviderContainer> bootstrap() async {
     await providers.initializeProviders(container);
     return container;
   } else {
-    final container = ProviderContainer();
+    final container = ProviderContainer(overrides: [
+      userMenuProvider.overrideWith((ref) async {
+        final jsonString =
+            await rootBundle.loadString('assets/json/usermenu.json');
+        final data = jsonDecode(jsonString);
+        final userMenu = UserMenu.create()..mergeFromProto3Json(data);
+
+        return userMenu;
+      }),
+    ]);
     await providers.initializeProviders(container);
     return container;
   }

@@ -12,6 +12,7 @@ const users = {
   'admin': 'admin',
   'icoldo': 'icoldo',
   'salvador': 'salvador',
+  'OP1': 'tecnico1',
 };
 
 // Map associating user names with operator names
@@ -19,6 +20,7 @@ const operatorNames = {
   'admin': 'ADMIN',
   'icoldo': 'ICOLDO',
   'salvador': 'SALVADOR',
+  'op1': 'OP1',
 };
 
 class SignInView extends ConsumerWidget {

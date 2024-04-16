@@ -14,9 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-
-## Commands
-
-build release for web: flutter build web -t lib/src/main.dart --no-tree-shake-icons
-compile with build runner manual: dart run build_runner build
-compile with build runner watcher: dart run build_runner watch --use-polling-watcher

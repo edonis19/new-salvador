@@ -29,7 +29,6 @@ class InterventiApiRepository {
 
   InterventiApiRepository({required this.dio, required this.config}) {
     dio.interceptors.add(LogInterceptor());
-    if (kDebugMode) {
       dio.httpClientAdapter = IOHttpClientAdapter(
         createHttpClient: () {
           final HttpClient client = HttpClient();
@@ -40,7 +39,6 @@ class InterventiApiRepository {
           return client;
         },
       );
-    }
   }
 
   Future<List<Intervento>> getInterventi({String? numDoc}) async {

@@ -44,7 +44,7 @@ class SyncPage extends ConsumerWidget {
                       children: [
                         ListTile(
                           leading: Text(intervento.idTestata.toString()),
-                          title: Text(intervento.cliente!.descrizione!),
+                          //title: Text(intervento.cliente!.descrizione!),
                           subtitle: Text(formattedDate),
                           trailing: IconButton(
                             icon: Icon(Icons.sync), // Aggiungi un'icona al pulsante

@@ -259,8 +259,8 @@ for (var riga in intervento.righe) {
                             ),
                             tipoRiga: null,
                             qta: riga.qta,
-                            dtOraIni: null,
-                            dtOraFin: null,
+                            dtOraIni: riga.dtOraIni.toString(),
+                            dtOraFin: riga.dtOraFin.toString(),
                             operatore: riga.operatore,
                             note: null,
                             noteDaStampare: null,
@@ -979,6 +979,16 @@ final result = await ref.read(addRigheApiRepositoryProvider).updateRighe(
                           }
                         }
 
+                        String formattedStartTime = '${startTime!.hour}:${startTime!.minute}';
+DateTime dtOraIni = DateTime.parse(DateFormat('yyyy-MM-dd').format(DateTime.now()) + ' ' + formattedStartTime);
+String formattedFinTime = '${endTime!.hour}:${endTime!.minute}';
+DateTime dtOraFin = DateTime.parse(DateFormat('yyyy-MM-dd').format(DateTime.now()) + ' ' + formattedFinTime);
+
+
+
+
+
+
                         // double quantityDouble =
                         //     double.parse(quantity.toString());
                         double durationDouble = parseDuration(duration);
@@ -990,9 +1000,10 @@ final result = await ref.read(addRigheApiRepositoryProvider).updateRighe(
                           'dataInserimento':
                               DateFormat('yyyy-MM-dd').format(DateTime.now()),
                           'quantita': durationDouble,
-                          //'durata': duration,
+                          'durataIni': dtOraIni,
+                          'durataFin' : dtOraFin,
                           'note': notes,
-                          'operatore': operatore
+                          'operatore': operatore,
                         };
                         // var interventoArticolo =
                         //     InterventoArticoloState.fromJson(articoloJson);

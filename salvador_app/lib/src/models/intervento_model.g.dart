@@ -15400,11 +15400,11 @@ const RigaSchema = IsarGeneratedSchema(
       ),
       IsarPropertySchema(
         name: 'dtOraIni',
-        type: IsarType.string,
+        type: IsarType.dateTime,
       ),
       IsarPropertySchema(
         name: 'dtOraFin',
-        type: IsarType.string,
+        type: IsarType.dateTime,
       ),
       IsarPropertySchema(
         name: 'operatore',
@@ -15606,22 +15606,10 @@ int serializeRiga(IsarWriter writer, Riga object) {
   IsarCore.writeDouble(writer, 40, object.moltPrz ?? double.nan);
   IsarCore.writeDouble(writer, 41, object.prezzoUni ?? double.nan);
   IsarCore.writeDouble(writer, 42, object.nettoRiga ?? double.nan);
-  {
-    final value = object.dtOraIni;
-    if (value == null) {
-      IsarCore.writeNull(writer, 43);
-    } else {
-      IsarCore.writeString(writer, 43, value);
-    }
-  }
-  {
-    final value = object.dtOraFin;
-    if (value == null) {
-      IsarCore.writeNull(writer, 44);
-    } else {
-      IsarCore.writeString(writer, 44, value);
-    }
-  }
+  IsarCore.writeLong(writer, 43,
+      object.dtOraIni?.toUtc().microsecondsSinceEpoch ?? -9223372036854775808);
+  IsarCore.writeLong(writer, 44,
+      object.dtOraFin?.toUtc().microsecondsSinceEpoch ?? -9223372036854775808);
   {
     final value = object.operatore;
     if (value == null) {
@@ -16073,10 +16061,26 @@ Riga deserializeRiga(IsarReader reader) {
       _nettoRiga = value;
     }
   }
-  final String? _dtOraIni;
-  _dtOraIni = IsarCore.readString(reader, 43);
-  final String? _dtOraFin;
-  _dtOraFin = IsarCore.readString(reader, 44);
+  final DateTime? _dtOraIni;
+  {
+    final value = IsarCore.readLong(reader, 43);
+    if (value == -9223372036854775808) {
+      _dtOraIni = null;
+    } else {
+      _dtOraIni =
+          DateTime.fromMicrosecondsSinceEpoch(value, isUtc: true).toLocal();
+    }
+  }
+  final DateTime? _dtOraFin;
+  {
+    final value = IsarCore.readLong(reader, 44);
+    if (value == -9223372036854775808) {
+      _dtOraFin = null;
+    } else {
+      _dtOraFin =
+          DateTime.fromMicrosecondsSinceEpoch(value, isUtc: true).toLocal();
+    }
+  }
   final String? _operatore;
   _operatore = IsarCore.readString(reader, 45);
   final bool? _saldaRiga;
@@ -21246,171 +21250,80 @@ extension RigaQueryFilter on QueryBuilder<Riga, Riga, QFilterCondition> {
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
           property: 43,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniGreaterThan(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
           property: 43,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniGreaterThanOrEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
           property: 43,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniLessThan(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
           property: 43,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniLessThanOrEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
           property: 43,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniBetween(
-    String? lower,
-    String? upper, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? lower,
+    DateTime? upper,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
           property: 43,
           lower: lower,
           upper: upper,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        StartsWithCondition(
-          property: 43,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        EndsWithCondition(
-          property: 43,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniContains(String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        ContainsCondition(
-          property: 43,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        MatchesCondition(
-          property: 43,
-          wildcard: pattern,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        const EqualCondition(
-          property: 43,
-          value: '',
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraIniIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        const GreaterCondition(
-          property: 43,
-          value: '',
         ),
       );
     });
@@ -21429,171 +21342,80 @@ extension RigaQueryFilter on QueryBuilder<Riga, Riga, QFilterCondition> {
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         EqualCondition(
           property: 44,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinGreaterThan(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterCondition(
           property: 44,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinGreaterThanOrEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         GreaterOrEqualCondition(
           property: 44,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinLessThan(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessCondition(
           property: 44,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinLessThanOrEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? value,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         LessOrEqualCondition(
           property: 44,
           value: value,
-          caseSensitive: caseSensitive,
         ),
       );
     });
   }
 
   QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinBetween(
-    String? lower,
-    String? upper, {
-    bool caseSensitive = true,
-  }) {
+    DateTime? lower,
+    DateTime? upper,
+  ) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(
         BetweenCondition(
           property: 44,
           lower: lower,
           upper: upper,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        StartsWithCondition(
-          property: 44,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        EndsWithCondition(
-          property: 44,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinContains(String value,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        ContainsCondition(
-          property: 44,
-          value: value,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinMatches(
-      String pattern,
-      {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        MatchesCondition(
-          property: 44,
-          wildcard: pattern,
-          caseSensitive: caseSensitive,
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        const EqualCondition(
-          property: 44,
-          value: '',
-        ),
-      );
-    });
-  }
-
-  QueryBuilder<Riga, Riga, QAfterFilterCondition> dtOraFinIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(
-        const GreaterCondition(
-          property: 44,
-          value: '',
         ),
       );
     });
@@ -32806,8 +32628,12 @@ _$RigaImpl _$$RigaImplFromJson(Map<String, dynamic> json) => _$RigaImpl(
       moltPrz: (json['moltPrz'] as num?)?.toDouble(),
       prezzoUni: (json['prezzoUni'] as num?)?.toDouble(),
       nettoRiga: (json['nettoRiga'] as num?)?.toDouble(),
-      dtOraIni: json['dtOraIni'] as String?,
-      dtOraFin: json['dtOraFin'] as String?,
+      dtOraIni: json['dtOraIni'] == null
+          ? null
+          : DateTime.parse(json['dtOraIni'] as String),
+      dtOraFin: json['dtOraFin'] == null
+          ? null
+          : DateTime.parse(json['dtOraFin'] as String),
       operatore: json['operatore'] as String?,
       saldaRiga: json['saldaRiga'] as bool?,
       dataRichConsegna: json['dataRichConsegna'] as String?,
@@ -32871,8 +32697,8 @@ Map<String, dynamic> _$$RigaImplToJson(_$RigaImpl instance) =>
       'moltPrz': instance.moltPrz,
       'prezzoUni': instance.prezzoUni,
       'nettoRiga': instance.nettoRiga,
-      'dtOraIni': instance.dtOraIni,
-      'dtOraFin': instance.dtOraFin,
+      'dtOraIni': instance.dtOraIni?.toIso8601String(),
+      'dtOraFin': instance.dtOraFin?.toIso8601String(),
       'operatore': instance.operatore,
       'saldaRiga': instance.saldaRiga,
       'dataRichConsegna': instance.dataRichConsegna,

@@ -29,7 +29,6 @@ class ClientiApiRepository {
 
   ClientiApiRepository({required this.dio, required this.config}) {
     dio.interceptors.add(LogInterceptor());
-    if (kDebugMode) {
       dio.httpClientAdapter = IOHttpClientAdapter(
         createHttpClient: () {
           final HttpClient client = HttpClient();
@@ -39,7 +38,6 @@ class ClientiApiRepository {
           return client;
         },
       );
-    }
   }
 
   Future<List<Cliente>> getCliente() async {
